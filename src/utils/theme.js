@@ -4,6 +4,7 @@ export default createTheme({
   palette: {
     mode: "light",
     primary: {
+      light: "#f5f5f7",
       main: "#000", // negro
       contrastText: "#fff",
     },

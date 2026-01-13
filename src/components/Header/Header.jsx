@@ -41,9 +41,11 @@ export default function Header(props) {
               justifyContent: "space-between",
             }}
           >
-            <Typography variant="h6" component="div">
-              ICON
-            </Typography>
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+              <Typography variant="h6" component="div">
+                ICON
+              </Typography>
+            </Link>
             <Stack direction="row" spacing={2}>
               {HEADERS.map((header) => (
                 <Link
