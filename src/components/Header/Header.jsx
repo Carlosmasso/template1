@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import { Link, Outlet } from "react-router-dom";
-import { Stack } from "@mui/material";
+import { Stack, Box } from "@mui/material";
 import Footer from "../Footer/Footer";
 
 const HEADERS = [
@@ -30,7 +30,7 @@ const HideOnScroll = (props) => {
 
 export default function Header(props) {
   return (
-    <div>
+    <Box>
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar sx={{ height: "50px !important" }}>
@@ -60,46 +60,10 @@ export default function Header(props) {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-       <Outlet />
-     {/*  <div className="content">
+      <Box component="main" sx={{ flex: 1, mt: "50px" }}>
         <Outlet />
-      </div> */}
+      </Box>
       <Footer />
-    </div>
-  );
-  return (
-    <div>
-      <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar sx={{ height: "50px !important" }}>
-          <Toolbar
-            sx={{
-              minHeight: "100% !important",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography variant="h6" component="div">
-              ICON
-            </Typography>
-            <Stack direction="row" spacing={2}>
-              {HEADERS.map((header) => (
-                <Link
-                  to={header.path}
-                  key={header.label}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <Typography variant="subtitle2">{header.label}</Typography>
-                </Link>
-              ))}
-            </Stack>
-          </Toolbar>
-        </AppBar>
-      </HideOnScroll>
-      <div className="content">
-        <Outlet />
-      </div>
-      <Footer />
-    </div>
+    </Box>
   );
 }

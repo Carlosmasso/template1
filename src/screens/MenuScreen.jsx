@@ -80,13 +80,7 @@ const MenuScreen = () => {
         title="Creamos contenido visual que conecta"
         height="100vh"
       />
-      <section
-        style={{
-          maxWidth: 1200,
-          margin: "40px auto 0 auto",
-          padding: "0 24px",
-        }}
-      >
+      <section className="content">
         <Fade in={inViewTitle} timeout={900}>
           <Typography
             ref={refTitle}
@@ -190,7 +184,7 @@ const MenuScreen = () => {
             </Typography>
             <Typography
               variant="body1"
-              sx={{ color: "#444", mb: 3, textAlign: "center" }}
+              sx={{ mb: 3, textAlign: "center" }}
             >
               Nuestro equipo está especializado en crear imágenes que transmiten
               emociones y cuentan historias. Utilizamos tecnología de última
@@ -209,7 +203,7 @@ const MenuScreen = () => {
               <Box
                 sx={{
                   flex: "1 1 220px",
-                  bgcolor: "#f7f7f7",
+                  bgcolor: "#edededaa",
                   borderRadius: 3,
                   p: 3,
                   minWidth: 220,
@@ -226,7 +220,7 @@ const MenuScreen = () => {
               <Box
                 sx={{
                   flex: "1 1 220px",
-                  bgcolor: "#f7f7f7",
+                  bgcolor: "#edededaa",
                   borderRadius: 3,
                   p: 3,
                   minWidth: 220,
@@ -244,7 +238,7 @@ const MenuScreen = () => {
               <Box
                 sx={{
                   flex: "1 1 220px",
-                  bgcolor: "#f7f7f7",
+                  bgcolor: "#edededaa",
                   borderRadius: 3,
                   p: 3,
                   minWidth: 220,

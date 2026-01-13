@@ -57,8 +57,10 @@ const Overlay = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  padding-inline: 24px;
   justify-content: center;
   background: rgba(0, 0, 0, 0.45);
+  text-align: center;
 `;
 
 export default HeroVideo;
