@@ -8,9 +8,13 @@ export default createTheme({
       main: "#000", // negro
       contrastText: "#fff",
     },
-    secondary: {
+   /*  secondary: {
       main: "#0071e3", // azul Apple para detalles
       contrastText: "#fff",
+    }, */
+    secondary: {
+      main: "#f5f5f7", // naranja Apple para botones secundarios
+      contrastText: "#000",
     },
     background: {
       default: "#f5f5f7", // fondo Apple

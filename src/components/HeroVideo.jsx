@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 
@@ -9,7 +9,19 @@ const HeroVideo = ({ videoSrc, title = "", height = "40vh" }) => {
       <Video src={videoSrc} autoPlay muted loop playsInline />
       {title && (
         <Overlay>
-          <Typography color="white" variant="h4">{title}</Typography>
+          <div>
+            <Typography color="white" variant="h4">
+              {title}
+            </Typography>
+            <Stack direction="row" spacing={2} justifyContent="center" mt={2}>
+              <Button variant="contained" color="primary" size="large">
+                Nuestros Servicios
+              </Button>
+              <Button variant="contained" color="secondary" size="large">
+                Contáctanos
+              </Button>
+            </Stack>
+          </div>
         </Overlay>
       )}
     </Section>

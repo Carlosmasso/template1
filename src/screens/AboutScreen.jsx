@@ -33,7 +33,7 @@ const AboutScreen = () => {
   const allImages = photographers.reduce((arr, ph) => arr.concat(ph.images), []);
 
   return (
-    <Box>
+    <Box className="content">
       <Typography variant="h4" align="center" gutterBottom>
         Sobre Nosotros
       </Typography>

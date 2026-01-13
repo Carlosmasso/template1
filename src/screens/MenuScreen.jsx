@@ -77,7 +77,7 @@ const MenuScreen = () => {
     <>
       <HeroVideo
         videoSrc={HERO_VIDEO}
-        title="Servicios de Fotografía"
+        title="Creamos contenido visual que conecta"
         height="100vh"
       />
       <section
