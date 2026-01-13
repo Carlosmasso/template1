@@ -1,0 +1,21 @@
+
+.content {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding-top: 84px;
+  padding-bottom: 120px;
+}
+
+.footer {
+  width: 100vw;
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #888;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+}
