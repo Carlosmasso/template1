@@ -58,7 +58,7 @@ export default function Header(props) {
                   key={header.label}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <Typography>{header.label}</Typography>
+                  <Typography fontWeight={500}>{header.label}</Typography>
                 </Link>
               ))}
               <IconButton onClick={toggleTheme} color="inherit" size="small">

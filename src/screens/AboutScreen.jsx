@@ -42,9 +42,13 @@ const AboutScreen = () => {
     []
   );
 
+  const [refHero, inViewHero] = useInView();
   const [refStats, inViewStats] = useInView();
   const [refMission, inViewMission] = useInView();
+  const [refTeam, inViewTeam] = useInView();
   const [refValues, inViewValues] = useInView();
+  const [refGallery, inViewGallery] = useInView();
+  const [refCta, inViewCta] = useInView();
 
   const stats = [
     {
@@ -99,24 +103,28 @@ const AboutScreen = () => {
   return (
     <Box className="content">
       {/* Hero Section */}
-      <Typography
-        variant="h3"
-        align="center"
-        gutterBottom
-        fontWeight={700}
-        sx={{ mb: 2 }}
-      >
-        Sobre Nosotros
-      </Typography>
-      <Typography
-        variant="body1"
-        color="text.secondary"
-        sx={{ fontSize: "1.1rem", lineHeight: 1.8, textAlign: "center" }}
-      >
-        Somos un equipo apasionado por contar historias a través de la
-        fotografía. Creemos que cada imagen tiene el poder de transmitir
-        emociones, preservar recuerdos y conectar personas.
-      </Typography>
+      <Fade in={inViewHero} timeout={700}>
+        <div ref={refHero}>
+          <Typography
+            variant="h3"
+            align="center"
+            gutterBottom
+            fontWeight={700}
+            sx={{ mb: 2 }}
+          >
+            Sobre Nosotros
+          </Typography>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{ fontSize: "1.1rem", lineHeight: 1.8, textAlign: "center" }}
+          >
+            Somos un equipo apasionado por contar historias a través de la
+            fotografía. Creemos que cada imagen tiene el poder de transmitir
+            emociones, preservar recuerdos y conectar personas.
+          </Typography>
+        </div>
+      </Fade>
 
       {/* Stats Section */}
       <Fade in={inViewStats} timeout={900}>
@@ -124,7 +132,7 @@ const AboutScreen = () => {
           ref={refStats}
           container
           spacing={2}
-          sx={{ mb: 8 , mt: 4}}
+          sx={{ mb: 8, mt: 4 }}
           justifyContent="space-around"
         >
           {stats.map((stat, idx) => (
@@ -190,28 +198,32 @@ const AboutScreen = () => {
       </Fade>
 
       {/* Team Section */}
-      <Typography variant="h4" align="center" fontWeight={600} sx={{ mb: 4 }}>
-        Nuestro Equipo
-      </Typography>
-      <Box
-        sx={{
-          mb: 8,
-          gap: 4,
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "stretch",
-          justifyContent: "center",
-        }}
-      >
-        {photographers.map((ph) => (
-          <PhotographerCard
-            key={ph.name}
-            name={ph.name}
-            description={ph.description}
-            avatar={ph.avatar}
-          />
-        ))}
-      </Box>
+      <Fade in={inViewTeam} timeout={900}>
+        <div ref={refTeam}>
+          <Typography variant="h4" align="center" fontWeight={600} sx={{ mb: 4 }}>
+            Nuestro Equipo
+          </Typography>
+          <Box
+            sx={{
+              mb: 8,
+              gap: 4,
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "stretch",
+              justifyContent: "center",
+            }}
+          >
+            {photographers.map((ph) => (
+              <PhotographerCard
+                key={ph.name}
+                name={ph.name}
+                description={ph.description}
+                avatar={ph.avatar}
+              />
+            ))}
+          </Box>
+        </div>
+      </Fade>
 
       {/* Values Section */}
       <Fade in={inViewValues} timeout={900}>
@@ -244,11 +256,7 @@ const AboutScreen = () => {
                   <Typography variant="h6" fontWeight={600} sx={{ mb: 1.5 }}>
                     {value.title}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ lineHeight: 1.7 }}
-                  >
+                  <Typography color="text.secondary">
                     {value.description}
                   </Typography>
                 </Paper>
@@ -259,44 +267,52 @@ const AboutScreen = () => {
       </Fade>
 
       {/* Gallery Section */}
-      <Box sx={{ mt: 10, maxWidth: 800, mx: "auto" }}>
-        <Typography variant="h4" align="center" fontWeight={600} sx={{ mb: 3 }}>
-          Galería Destacada
-        </Typography>
-        <Typography
-          variant="body1"
-          align="center"
-          color="text.secondary"
-          sx={{ mb: 4 }}
-        >
-          Algunos momentos que hemos tenido el privilegio de capturar
-        </Typography>
-        <NativeCarousel images={allImages} interval={3000} />
-      </Box>
+      <Fade in={inViewGallery} timeout={900}>
+        <div ref={refGallery}>
+          <Box sx={{ mt: 10, maxWidth: 800, mx: "auto" }}>
+            <Typography variant="h4" align="center" fontWeight={600} sx={{ mb: 3 }}>
+              Galería Destacada
+            </Typography>
+            <Typography
+              variant="body1"
+              align="center"
+              color="text.secondary"
+              sx={{ mb: 4 }}
+            >
+              Algunos momentos que hemos tenido el privilegio de capturar
+            </Typography>
+            <NativeCarousel images={allImages} interval={3000} />
+          </Box>
+        </div>
+      </Fade>
 
       {/* CTA Section */}
-      <Box
-        sx={{
-          mt: 10,
-          mb: 6,
-          textAlign: "center",
-          p: 6,
-          bgcolor: "action.hover",
-          borderRadius: 4,
-        }}
-      >
-        <Typography variant="h5" fontWeight={600} sx={{ mb: 2 }}>
-          ¿Listo para crear algo increíble juntos?
-        </Typography>
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{ mb: 3, maxWidth: 600, mx: "auto" }}
-        >
-          Ya sea que necesites un retrato profesional, fotografía de producto o
-          cobertura de eventos, estamos aquí para ayudarte a contar tu historia.
-        </Typography>
-      </Box>
+      <Fade in={inViewCta} timeout={900}>
+        <div ref={refCta}>
+          <Box
+            sx={{
+              mt: 10,
+              mb: 6,
+              textAlign: "center",
+              p: 6,
+              bgcolor: "action.hover",
+              borderRadius: 4,
+            }}
+          >
+            <Typography variant="h5" fontWeight={600} sx={{ mb: 2 }}>
+              ¿Listo para crear algo increíble juntos?
+            </Typography>
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ mb: 3, maxWidth: 600, mx: "auto" }}
+            >
+              Ya sea que necesites un retrato profesional, fotografía de producto o
+              cobertura de eventos, estamos aquí para ayudarte a contar tu historia.
+            </Typography>
+          </Box>
+        </div>
+      </Fade>
     </Box>
   );
 };

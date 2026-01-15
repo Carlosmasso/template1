@@ -92,6 +92,7 @@ const MenuScreen = () => {
   const [refInfo, inViewInfo] = useInView();
   const [refGallery, inViewGallery] = useInView();
   const [refTesti, inViewTesti] = useInView();
+  const [refCta, inViewCta] = useInView();
 
   return (
     <>
@@ -156,7 +157,7 @@ const MenuScreen = () => {
                 flexWrap: "wrap",
                 gap: 4,
                 justifyContent: "center",
-                mb: 4,
+                my: 6,
               }}
             >
               {skills.map(({ title, description }) => (
@@ -277,17 +278,19 @@ const MenuScreen = () => {
             </Stack>
           </Box>
         </Fade>
-        <div style={{ textAlign: "center", marginTop: 48 }}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            size="large"
-            component={Link}
-            to="/contact"
-          >
-            Solicita tu sesión
-          </Button>
-        </div>
+        <Fade in={inViewCta} timeout={900}>
+          <div ref={refCta} style={{ textAlign: "center", marginTop: 48 }}>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              size="large"
+              component={Link}
+              to="/contact"
+            >
+              Solicita tu sesión
+            </Button>
+          </div>
+        </Fade>
       </section>
     </>
   );

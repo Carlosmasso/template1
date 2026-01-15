@@ -1,12 +1,12 @@
 /* Smooth theme transition */
-/* * {
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out !important;
-} */
+* {
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out, opacity 0.7s ease-in-out !important;
+}
 
 /* Preserve hover transitions */
-/* *:hover {
+*:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.2s ease, color 0.2s ease !important;
-} */
+}
 
 #root {
   overflow-x: hidden;

@@ -16,6 +16,8 @@ import useInView from "../hooks/useInView";
 
 const ContactScreen = () => {
   const [refInfo, inViewInfo] = useInView();
+  const [refHero, inViewHero] = useInView();
+  const [refMap, inViewMap] = useInView();
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const contactInfo = [
@@ -42,30 +44,34 @@ const ContactScreen = () => {
   return (
     <Box className="content" sx={{ maxWidth: 1200, mx: "auto" }}>
       {/* Hero Section */}
-      <Typography
-        variant="h3"
-        align="center"
-        gutterBottom
-        fontWeight={700}
-        sx={{ mb: 2 }}
-      >
-        Contacto
-      </Typography>
-      <Typography
-        variant="body1"
-        color="text.secondary"
-        sx={{
-          fontSize: "1.1rem",
-          lineHeight: 1.8,
-          textAlign: "center",
-          mb: 6,
-          maxWidth: 700,
-          mx: "auto",
-        }}
-      >
-        ¿Tienes un proyecto en mente? Nos encantaría escucharte. Completa el
-        formulario y te responderemos lo antes posible.
-      </Typography>
+      <Fade in={inViewHero} timeout={700}>
+        <Box ref={refHero}>
+          <Typography
+            variant="h3"
+            align="center"
+            gutterBottom
+            fontWeight={700}
+            sx={{ mb: 2 }}
+          >
+            Contacto
+          </Typography>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{
+              fontSize: "1.1rem",
+              lineHeight: 1.8,
+              textAlign: "center",
+              mb: 6,
+              maxWidth: 700,
+              mx: "auto",
+            }}
+          >
+            ¿Tienes un proyecto en mente? Nos encantaría escucharte. Completa el
+            formulario y te responderemos lo antes posible.
+          </Typography>
+        </Box>
+      </Fade>
 
       <Grid container spacing={4} justifyContent="center">
         {/* Contact Information */}
@@ -131,22 +137,23 @@ const ContactScreen = () => {
       </Grid>
 
       {/* Map Section (opcional - placeholder) */}
-      <Box sx={{ mt: 8 }}>
-        <Typography variant="h5" align="center" fontWeight={600} sx={{ mb: 4 }}>
-          Nuestra Ubicación
-        </Typography>
-        <Paper
-          elevation={0}
-          sx={{
-            height: 400,
-            bgcolor: "action.hover",
-            borderRadius: 3,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-          }}
-        >
+      <Fade in={inViewMap} timeout={900}>
+        <Box ref={refMap} sx={{ mt: 8 }}>
+          <Typography variant="h5" align="center" fontWeight={600} sx={{ mb: 4 }}>
+            Nuestra Ubicación
+          </Typography>
+          <Paper
+            elevation={0}
+            sx={{
+              height: 400,
+              bgcolor: "action.hover",
+              borderRadius: 3,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+          >
           <iframe
             title="location-map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100876.08283768906!2d-1.9321906!3d38.9943835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6797ed21a90a15%3A0x408ab3dc2e7b230!2sAlbacete%2C%20Spain!5e0!3m2!1sen!2ses!4v1234567890123!5m2!1sen!2ses"
@@ -157,8 +164,8 @@ const ContactScreen = () => {
             loading="lazy"
           ></iframe>
         </Paper>
-      </Box>
-
+        </Box>
+      </Fade>
       {/* Success Snackbar */}
       <Snackbar
         open={openSnackbar}
