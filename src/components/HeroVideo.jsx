@@ -1,6 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // Componente principal
 const HeroVideo = ({ videoSrc, title = "", height = "40vh" }) => {
@@ -14,10 +15,22 @@ const HeroVideo = ({ videoSrc, title = "", height = "40vh" }) => {
               {title}
             </Typography>
             <Stack direction="row" spacing={2} justifyContent="center" mt={2}>
-              <Button variant="contained" color="primary" size="large">
+              <Button 
+                variant="contained" 
+                color="primary" 
+                size="large"
+                component={Link}
+                to="/about"
+              >
                 Nuestros Servicios
               </Button>
-              <Button variant="contained" color="secondary" size="large">
+              <Button 
+                variant="contained" 
+                color="secondary" 
+                size="large"
+                component={Link}
+                to="/contact"
+              >
                 Contáctanos
               </Button>
             </Stack>

@@ -6,10 +6,12 @@ import MenuScreen from "./screens/MenuScreen";
 import ContactScreen from "./screens/ContactScreen";
 import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
 import CookieBanner from "./components/CookieBanner";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<MenuScreen />} />

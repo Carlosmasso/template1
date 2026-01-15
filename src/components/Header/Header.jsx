@@ -6,8 +6,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import { Link, Outlet } from "react-router-dom";
-import { Stack, Box } from "@mui/material";
+import { Stack, Box, IconButton } from "@mui/material";
 import Footer from "../Footer/Footer";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const HEADERS = [
   { label: "Home", path: "/" },
@@ -29,6 +32,8 @@ const HideOnScroll = (props) => {
 };
 
 export default function Header(props) {
+  const { mode, toggleTheme } = React.useContext(ThemeContext);
+
   return (
     <Box>
       <CssBaseline />
@@ -46,16 +51,19 @@ export default function Header(props) {
                 ICON
               </Typography>
             </Link>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} alignItems="center">
               {HEADERS.map((header) => (
                 <Link
                   to={header.path}
                   key={header.label}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <Typography variant="subtitle2">{header.label}</Typography>
+                  <Typography>{header.label}</Typography>
                 </Link>
               ))}
+              <IconButton onClick={toggleTheme} color="inherit" size="small">
+                {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
             </Stack>
           </Toolbar>
         </AppBar>

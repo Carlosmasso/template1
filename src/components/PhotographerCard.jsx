@@ -7,8 +7,8 @@ const PhotographerCard = ({ name, description, avatar }) => (
       borderRadius: 4,
       flex: '1 1 340px',
       minWidth: 280,
-      maxWidth: 400,
-      height: 340,
+      maxWidth: 500,
+      height: 400,
       position: 'relative',
       overflow: 'hidden',
       boxShadow: '0 2px 16px 0 rgba(60,60,60,0.07)',
@@ -63,7 +63,7 @@ const PhotographerCard = ({ name, description, avatar }) => (
       <Typography variant="h6" sx={{ mb: 1, fontWeight: 700, color: '#222' }}>
         {name}
       </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ fontSize: '1rem', lineHeight: 1.6 }}>
+      <Typography variant="body1" color="text.secondary">
         {description}
       </Typography>
     </Box>

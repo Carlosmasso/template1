@@ -18,8 +18,8 @@ const NativeCarousel = ({ images, interval = 3000 }) => {
     <Box sx={{
       position: "relative",
       width: "100%",
-      maxWidth: 600,
-      height: 260,
+      maxWidth: 800,
+      height: 400,
       margin: "0 auto",
       borderRadius: 3,
       overflow: "hidden",

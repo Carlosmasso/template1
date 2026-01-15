@@ -2,8 +2,28 @@ import React, { useEffect, useState } from "react";
 import HeroVideo from "../components/HeroVideo";
 import { Box, Typography, Button, Fade, Avatar, Stack } from "@mui/material";
 import useInView from "../hooks/useInView";
+import ServiceCard from "../components/ServiceCard";
+import GalleryCard from "../components/GalleryCard";
+import { Link } from "react-router-dom";
 
 const HERO_VIDEO = "https://www.w3schools.com/howto/rain.mp4";
+
+const skills = [
+  {
+    title: "Creatividad",
+    description: "Cada sesión es única, adaptada a tu estilo y necesidades.",
+  },
+  {
+    title: "Profesionalidad",
+    description:
+      "Más de 10 años de experiencia en fotografía comercial y artística.",
+  },
+  {
+    title: "Tecnología",
+    description:
+      "Equipos de última generación y edición avanzada para resultados perfectos.",
+  },
+];
 
 const servicios = [
   {
@@ -106,71 +126,13 @@ const MenuScreen = () => {
             mb: 8,
           }}
         >
-          {servicios.map((servicio, idx) => {
-            const [ref, inView] = useInView({ threshold: 0.18 });
-            return (
-              <Fade in={inView} timeout={700 + idx * 700} key={servicio.titulo}>
-                <Box
-                  ref={ref}
-                  sx={{
-                    position: "relative",
-                    borderRadius: 5,
-                    overflow: "hidden",
-                    minHeight: 380,
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
-                    bgcolor: "#fff",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    transition: "box-shadow 0.3s, transform 0.3s",
-                    cursor: "pointer",
-                    "&:hover": {
-                      boxShadow: "0 12px 40px rgba(0,0,0,0.18)",
-                      transform: "translateY(-4px) scale(1.03)",
-                    },
-                  }}
-                >
-                  <Box sx={{ width: "100%", height: 220, overflow: "hidden" }}>
-                    <img
-                      src={servicio.imagen}
-                      alt={servicio.alt}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        display: "block",
-                        transition: "filter 0.3s, transform 0.3s",
-                        filter: "brightness(0.88)",
-                      }}
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      p: 4,
-                      flex: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Typography
-                      variant="h5"
-                      fontWeight={700}
-                      sx={{ mb: 1, color: "#222", letterSpacing: 1 }}
-                    >
-                      {servicio.titulo}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{ color: "#555", opacity: 0.92 }}
-                    >
-                      {servicio.descripcion}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Fade>
-            );
-          })}
+          {servicios.map((servicio, idx) => (
+            <ServiceCard
+              key={servicio.titulo}
+              servicio={servicio}
+              index={idx}
+            />
+          ))}
         </Box>
         {/* Sección informativa sobre el servicio */}
         <Fade in={inViewInfo} timeout={900}>
@@ -182,10 +144,7 @@ const MenuScreen = () => {
             >
               Fotografía profesional para empresas, eventos y particulares
             </Typography>
-            <Typography
-              variant="body1"
-              sx={{ mb: 3, textAlign: "center" }}
-            >
+            <Typography variant="body1" sx={{ mb: 3, textAlign: "center" }}>
               Nuestro equipo está especializado en crear imágenes que transmiten
               emociones y cuentan historias. Utilizamos tecnología de última
               generación y técnicas creativas para ofrecer resultados únicos y
@@ -200,59 +159,26 @@ const MenuScreen = () => {
                 mb: 4,
               }}
             >
-              <Box
-                sx={{
-                  flex: "1 1 220px",
-                  bgcolor: "#edededaa",
-                  borderRadius: 3,
-                  p: 3,
-                  minWidth: 220,
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h6" fontWeight={600} sx={{ mb: 1 }}>
-                  Creatividad
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Cada sesión es única, adaptada a tu estilo y necesidades.
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  flex: "1 1 220px",
-                  bgcolor: "#edededaa",
-                  borderRadius: 3,
-                  p: 3,
-                  minWidth: 220,
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h6" fontWeight={600} sx={{ mb: 1 }}>
-                  Profesionalidad
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Más de 10 años de experiencia en fotografía comercial y
-                  artística.
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  flex: "1 1 220px",
-                  bgcolor: "#edededaa",
-                  borderRadius: 3,
-                  p: 3,
-                  minWidth: 220,
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h6" fontWeight={600} sx={{ mb: 1 }}>
-                  Tecnología
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Equipos de última generación y edición avanzada para
-                  resultados perfectos.
-                </Typography>
-              </Box>
+              {skills.map(({ title, description }) => (
+                <Box
+                  key={description}
+                  sx={{
+                    p: 3,
+                    minWidth: 220,
+                    borderRadius: 3,
+                    flex: "1 1 220px",
+                    bgcolor: "background.paper",
+                    textAlign: "center",
+                  }}
+                >
+                  <Typography variant="h6" fontWeight={600} sx={{ mb: 1 }}>
+                    {title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {description}
+                  </Typography>
+                </Box>
+              ))}
             </Box>
             <Typography
               variant="h6"
@@ -299,10 +225,7 @@ const MenuScreen = () => {
                 </Typography>
               </Box>
             </Box>
-            <Typography
-              variant="body1"
-              sx={{ color: "#444", mt: 4, textAlign: "center" }}
-            >
+            <Typography variant="body1" sx={{ mt: 6, textAlign: "center" }}>
               ¿Tienes dudas o quieres reservar tu sesión? Contáctanos y te
               asesoramos sin compromiso.
             </Typography>
@@ -320,80 +243,20 @@ const MenuScreen = () => {
             }}
           >
             {servicios.map((servicio, idx) => (
-              <Box
-                key={idx}
-                sx={{
-                  position: "relative",
-                  borderRadius: 4,
-                  overflow: "hidden",
-                  minHeight: 320,
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
-                  cursor: "pointer",
-                  transition: "transform 0.4s",
-                  "&:hover img": {
-                    transform: "scale(1.07)",
-                    filter: "brightness(1)",
-                  },
-                  "&:hover .overlay": {
-                    bgcolor: "rgba(0,0,0,0.6)",
-                  },
-                }}
-              >
-                <img
-                  src={servicio.imagen}
-                  alt={servicio.alt}
-                  style={{
-                    width: "100%",
-                    height: "400px",
-                    objectFit: "cover",
-                    display: "block",
-                    filter: "brightness(0.85)",
-                    transition: "transform 0.4s, filter 0.3s",
-                  }}
-                />
-                <Box
-                  className="overlay"
-                  sx={{
-                    p: 4,
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    width: "100%",
-                    bgcolor: "rgba(0,0,0,0.45)",
-                    color: "#fff",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    justifyContent: "flex-end",
-                    minHeight: 80,
-                    transition: "background 0.3s",
-                  }}
-                >
-                  <Typography variant="h5" fontWeight={600} sx={{ mb: 0.5 }}>
-                    {servicio.titulo}
-                  </Typography>
-                  <Typography variant="body2" sx={{ opacity: 0.85 }}>
-                    {servicio.descripcion}
-                  </Typography>
-                </Box>
-              </Box>
+              <GalleryCard key={idx} servicio={servicio} />
             ))}
           </Box>
         </Fade>
         {/* Slider de testimonios con transición */}
         <Fade in={inViewTesti} timeout={900}>
           <Box ref={refTesti} sx={{ textAlign: "center", mt: 8, mb: 2 }}>
-            <Typography
-              variant="h4"
-              fontWeight={500}
-              sx={{ mb: 3, letterSpacing: 1 }}
-            >
+            <Typography variant="h4" fontWeight={500} sx={{ mb: 3 }}>
               Opiniones de nuestros clientes
             </Typography>
             <Stack
+              spacing={2}
               direction="column"
               alignItems="center"
-              spacing={2}
               sx={{ maxWidth: 420, margin: "0 auto" }}
             >
               <Avatar
@@ -401,15 +264,13 @@ const MenuScreen = () => {
                 alt={testimonios[testiIdx].nombre}
                 sx={{ width: 64, height: 64, mb: 1 }}
               />
-              <Typography
-                variant="body1"
-                sx={{ fontStyle: "italic", color: "#444" }}
-              >
+              <Typography variant="body1" sx={{ fontStyle: "italic" }}>
                 "{testimonios[testiIdx].texto}"
               </Typography>
               <Typography
                 variant="subtitle2"
-                sx={{ color: "#888", fontWeight: 500 }}
+                color="text.secondary"
+                sx={{ fontWeight: 500 }}
               >
                 {testimonios[testiIdx].nombre}
               </Typography>
@@ -417,18 +278,12 @@ const MenuScreen = () => {
           </Box>
         </Fade>
         <div style={{ textAlign: "center", marginTop: 48 }}>
-          <Button
-            variant="contained"
-            color="primary"
+          <Button 
+            variant="contained" 
+            color="primary" 
             size="large"
-            sx={{
-              borderRadius: 2,
-              px: 5,
-              py: 1.5,
-              fontWeight: 600,
-              letterSpacing: 1,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-            }}
+            component={Link}
+            to="/contact"
           >
             Solicita tu sesión
           </Button>
